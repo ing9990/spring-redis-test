@@ -1,0 +1,23 @@
+spring:
+  cache:
+    type: redis
+
+  redis:
+    host: localhost
+    port: 6379
+
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+
+    # open-in-view는 Controller에도 트랜잭션의 영향을 유지 시킵니다.
+    # LazyLoadingException에 자유로울 수 있지만, Connection이 부족해지는 현상이 일어날 수 있습니다.
+    # LazyLoad는 FetchType을 EAGER로 바꾸거나 Fetch Join이나 EntityGraph를 사용해 불러올 수 있습니다.
+    # FetchType을 EAGER로 변경할 경우 엔티티 조회 시 연관된 엔티티가 모두 조회되는 N + 1 이슈가 생길 수 있습니다.
+    open-in-view: false
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/USER_TEST
+    username: root
+    password: 1111
