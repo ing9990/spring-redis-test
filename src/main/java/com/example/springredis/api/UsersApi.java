@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 /**
  * @author Taewoo
@@ -58,6 +59,14 @@ public class UsersApi {
 
         return ResponseEntity.ok().body(UserResponse.success(email));
     }
+
+    @GetMapping("/send-token/{email}")
+    public ResponseEntity<?> sendToken(@PathVariable String email) {
+        var token = userService.checkMailSend(email);
+
+        return ResponseEntity.ok(Map.of("token", token));
+    }
+
 
     @Getter
     @AllArgsConstructor

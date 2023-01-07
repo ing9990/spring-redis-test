@@ -43,18 +43,15 @@ public class MainUserService implements UserService {
 
     public String updateUser(SignUpParam signUpParam) {
 
-        System.out.println(signUpParam.getEmail());
-        System.out.println(signUpParam.getUsername());
-        System.out.println(signUpParam.getPassword());
-
-        System.out.println("hello");
         var user = getUserByEmail(signUpParam.getEmail());
-
         user.update(signUpParam.getEmail(), signUpParam.getPassword(), signUpParam.getUsername());
-
         redisService.createToken(signUpParam.getEmail());
-
         return user.getEmail();
+    }
+
+    @Override
+    public String checkMailSend(String email) {
+        return redisService.sendCheckEmail(email);
     }
 
     /**

@@ -11,5 +11,7 @@ public interface RedisService {
 
     void createToken(String email);
 
+    String sendCheckEmail(String email);
+
     String getToken(String email);
 }

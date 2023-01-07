@@ -15,4 +15,6 @@ public interface UserService {
     Boolean signIn(SignInParam signInParam);
 
     String updateUser(SignUpParam signUpParam);
+
+    String checkMailSend(String email);
 }

@@ -20,4 +20,9 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/USER_TEST
     username: root
-    password: 1111
+    password:
+
+
+email:
+  max_size: 6
+  expired_minute: 3
